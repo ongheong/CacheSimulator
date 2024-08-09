@@ -1,0 +1,25 @@
+# YAML config file for cache simulator
+
+architecture:
+  word_size: 4 #bytes
+  block_size: 16 #bytes
+  write_back: true 
+
+cache_1: #required
+  blocks: 32 #기존 방식 16, 캐시 크기 확장
+  associativity: 4 #기존 방식 2, 적중률 향상
+  hit_time: 1 #cycles
+
+cache_2:
+  blocks: 128 #기존 64, 캐시 크기 확장
+  associativity: 4
+  hit_time: 16
+
+cache_3:
+  blocks: 512 #기존 방식 256, 캐시 크기 확장 
+  associativity: 16 #기존 8, 적중률 향상
+  hit_time: 50 #기존 100, 적중시간 감소 
+
+mem: #required
+  hit_time: 1000 #cycles
+

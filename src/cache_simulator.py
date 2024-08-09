@@ -37,7 +37,7 @@ def main():
     
     logger.info('Loading config...')
     config_file = open(arguments['config_file'])
-    configs = yaml.load(config_file)
+    configs = yaml.load(config_file, Loader=yaml.FullLoader)
     hierarchy = build_hierarchy(configs, logger)
     logger.info('Memory hierarchy built.')
 
@@ -62,7 +62,7 @@ def print_cache(cache):
     sets = []
     set_indexes = sorted(cache.data.keys())
     if len(cache.data.keys()) > 0:
-        first_key = cache.data.keys()[0]
+        first_key = list(cache.data.keys())[0]
         way_no = 0
         
         #Label the columns
@@ -103,8 +103,8 @@ def print_cache(cache):
         table = UnixTable(sets)
         table.title = cache.name
         table.inner_row_border = True
-        print "\n"
-        print table.table
+        print ("\n")
+        print (table.table)
 
 #Loop through the instructions in the tracefile and use
 #the given memory hierarchy to find AMAT
